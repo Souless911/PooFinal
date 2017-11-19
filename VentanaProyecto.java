@@ -1,18 +1,19 @@
 import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 
 public class VentanaProyecto extends JFrame{
-
 	
 	public VentanaProyecto() {
 		super("Proyecto");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		PanelProyecto pp= new PanelProyecto();
-		this.add(pp);
+		PanelInstrucciones pi = new PanelInstrucciones(this);
+		this.add(pi);
+		
 		this.pack();
 		this.setVisible(true);
 	}
 	public static void main(String[] args) {
-		VentanaProyecto vp= new VentanaProyecto();
+		VentanaProyecto ventana = new VentanaProyecto();
 	}
 }
