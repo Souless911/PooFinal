@@ -148,7 +148,6 @@ public class PanelProyecto extends JPanel implements MouseMotionListener, Compon
 					
 					if(this.calif[k].verificarCalif()) {
 						this.puntajeVidas -= this.calif[k].getValor();
-						System.out.println("Score: " + this.puntajeVidas);
 					}	
 				}//cierra for
 				if(this.puntajeVidas < 0) {
@@ -179,7 +178,6 @@ public class PanelProyecto extends JPanel implements MouseMotionListener, Compon
 					this.numCalifs++;
 					if(this.calif[i].verificarCalif()) {
 						this.puntajeVidas += this.calif[i].getValor();
-						System.out.println("Score: " + this.puntajeVidas);
 						this.repaint();
 					}//cierra if verificaciÃ³n
 
