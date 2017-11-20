@@ -25,7 +25,7 @@ public class PanelProyecto extends JPanel implements MouseMotionListener, Compon
 				puntajeFinal,
 				vidas,
 				numBorrados = 0,
-				tamañoArreglo = 11,
+				tamanoArreglo = 11,
 				tiempo = 20,
 				nivel = 0;
 	private boolean seguir;
@@ -60,7 +60,7 @@ public class PanelProyecto extends JPanel implements MouseMotionListener, Compon
 		super.paintComponent(g);
 		g.drawImage(fondo, 0, 0, this.getWidth(), this.getHeight(), this);
 		g.drawImage(borrego,this.xBorrego - 50,this.yBorrego - 50,80,70, this);
-		for(int i = 0; i < this.tamañoArreglo; i++) {
+		for(int i = 0; i < this.tamanoArreglo; i++) {
 			if( calif[i] != null) {
 				calif[i].setX( ( i * this.getWidth() ) / 11);
 				calif[i].pintaCali(g);
@@ -94,7 +94,7 @@ public class PanelProyecto extends JPanel implements MouseMotionListener, Compon
 		for(int l = 0; l < this.calif.length; l++) {
 			calif[l] = new Calificacion();
 		}
-		this.tamañoArreglo = 11;
+		this.tamanoArreglo = 11;
 		this.numBorrados = 0;
 		if(this.tiempo > 5) {
 			this.tiempo--;
@@ -105,11 +105,11 @@ public class PanelProyecto extends JPanel implements MouseMotionListener, Compon
 	
 	private void borrarCalif(int i) {
 		if(this.numBorrados < 10) {
-			for (int j = i; j < (this.tamañoArreglo - 1); j++) {
+			for (int j = i; j < (this.tamanoArreglo - 1); j++) {
 				this.calif[j] = this.calif[j + 1];
 			}
-			this.calif[this.tamañoArreglo - 1] = null;
-			this.tamañoArreglo--;
+			this.calif[this.tamanoArreglo - 1] = null;
+			this.tamanoArreglo--;
 			this.numBorrados++;
 			this.repaint();
 		}
@@ -132,7 +132,7 @@ public class PanelProyecto extends JPanel implements MouseMotionListener, Compon
 		try {
 			do {
 				while(this.calif[0].getY() < (this.largoPantalla - 8) ) {
-					for(int i = 0; i < this.tamañoArreglo; i++) {
+					for(int i = 0; i < this.tamanoArreglo; i++) {
 						this.calif[i].incY();
 					}//cierra for
 					if(vidas <= 0) {
@@ -144,24 +144,24 @@ public class PanelProyecto extends JPanel implements MouseMotionListener, Compon
 					this.repaint();
 				} //cierra while
 
-				for(int k = 0; k < this.tamañoArreglo; k++) {
+				for(int k = 0; k < this.tamanoArreglo; k++) {
 					
 					if(this.calif[k].verificarCalif()) {
 						this.puntajeVidas -= this.calif[k].getValor();
-						if(this.puntajeVidas < 0) {
-							this.puntajeVidas = 0;
-							this.vidas--;
-							this.repaint();
-							if(vidas <= 0) {
-								this.perdiste();
-								this.vidas = 0;
-								break;
-							}
-						}
-						this.repaint();
-					}//cierra if verificación
+						System.out.println("Score: " + this.puntajeVidas);
+					}	
 				}//cierra for
-
+				if(this.puntajeVidas < 0) {
+					this.puntajeVidas = 0;
+					this.vidas--;
+					this.repaint();
+					if(vidas <= 0) {
+						this.perdiste();
+						this.vidas = 0;
+						break;
+					}
+				}
+				this.repaint();
 				this.crearArreglo();
 				
 			}while(this.seguir);
@@ -172,15 +172,16 @@ public class PanelProyecto extends JPanel implements MouseMotionListener, Compon
 	}
 
 	public void mouseClicked(MouseEvent e) {
-		for(int i = 0; i < this.tamañoArreglo; i++) {
+		for(int i = 0; i < this.tamanoArreglo; i++) {
 			try {
 				if( this.calif[i].getRec().contains( getMousePosition() ) ) {
 					this.sumaCalifs += this.calif[i].getValor();
 					this.numCalifs++;
 					if(this.calif[i].verificarCalif()) {
 						this.puntajeVidas += this.calif[i].getValor();
+						System.out.println("Score: " + this.puntajeVidas);
 						this.repaint();
-					}//cierra if verificación
+					}//cierra if verificaciÃ³n
 
 					else {
 						this.vidas--;
