@@ -41,10 +41,10 @@ public class PanelPerder extends JPanel implements ActionListener{
 		Font font = g.getFont().deriveFont( 20.0f );
 		g.setFont(font);
 		g.setColor(Color.white);
-		g.drawString("¡Perdiste! Tu promedio fue de: "+ this.prom, 250, 100);
+		g.drawString("Perdiste! Tu promedio fue de: "+ this.prom, 250, 100);
 		g.drawString("Tu puntaje fue de : " + this.puntaje, 250, 150);
 		g.drawString("Tu nivel fue de: " + this.nivel, 250, 200);
-		g.drawString("¿Deseas volver a intentarlo? ", 250, 250);
+		g.drawString("Presiona para volver a intentar. ", 250, 250);
 	}
 
 	@Override
