@@ -32,14 +32,14 @@ public class PanelInstrucciones extends JPanel implements ActionListener{
 		g.drawImage(this.fondoInstrucciones,0,170, this.getWidth(),this.getHeight()-50, this );
 		g.setFont(new Font("default", Font.BOLD, 20));
 		g.setColor(Color.RED);
-		g.drawString("¡Bienvenido al juego!",300,60);
+		g.drawString("Bienvenido al juego!",300,60);
 		g.setFont(new Font("default", Font.BOLD, 15));
 		g.setColor(Color.blue);
-		g.drawString("¡Ayuda a borreguito a pasar su semestre!",250,85);
-		g.drawString("Atrapa las calificaciones aprobatorias (70 o más) dando click en ellas, "
+		g.drawString("Ayuda a borreguito a pasar su semestre!",250,85);
+		g.drawString("Atrapa las calificaciones aprobatorias (70 para arriba) dando click en ellas, "
 				+ "y deja caer las reprobatorias.", 8, 110);
 		g.setColor(Color.red);
-		g.drawString("¡Buena suerte!", 340, 140);
+		g.drawString("Buena suerte!", 340, 140);
 	}
 
 	@Override
